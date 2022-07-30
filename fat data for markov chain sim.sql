@@ -1,0 +1,11 @@
+SELECT 
+    ff.DISPLAY_ID AS display_id,
+    ff.EVENT_TIMESTAMP_LOCAL AS dt_local,
+    ff.FATIGUE_STATUS_ID AS status_id,
+    ff.NEXT_FATIGUE_STATUS_ID AS next_status_id,
+    ff.DURATION AS duration,
+    ROUND(ff.TIME_LOCAL/100,0) AS hour_of_day
+FROM REPORTING.FACT_FATIGUE AS ff 
+WHERE ff.SITE_ID = 107
+    AND ff.DATE_LOCAL > 20220701
+ORDER BY ff.DISPLAY_ID, ff.EVENT_TIMESTAMP_LOCAL
